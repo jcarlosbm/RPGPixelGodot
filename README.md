@@ -5,6 +5,8 @@ Este repositorio sigue los tutoriales de la serie "Godot Action RPG Series" del 
 ## Descripción
 Este repositorio contiene el código fuente y los recursos utilizados para seguir los tutoriales de Heartbeast sobre cómo crear un RPG de acción con Godot utilizando C#. El proyecto se basa en el motor de juegos Godot y se desarrolla en el entorno de desarrollo integrado (IDE) VS Code.
 
+Nota: Los tutoriales originales están escritos en GDScript, pero he adaptado el código a C#.
+
 ## Serie de Tutoriales
 Puedes encontrar la serie de tutoriales aquí: [Godot Action RPG Series](https://youtube.com/playlist?list=PL9FzW-m48fn2SlrW0KoLT4n5egNdX-W9a&si=QQPlw_S_Uxij04yW)
 
