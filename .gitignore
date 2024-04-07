@@ -1,0 +1,33 @@
+# Godot 4+ specific ignores
+.godot/
+.import/
+*.import
+.DS_Store
+
+# Mono-specific
+.msbuild
+bin/
+obj/
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.unityproj
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.dll
+*.exe
+*.tmp
+*.bak
+*.cache
+*.log
+*.vscode
+.vscode/*
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.vscode/settings.json
+.vscodeignore
+*.sln.iml
