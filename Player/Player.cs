@@ -4,11 +4,19 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
 	//private int speed = 3;
-	private const int MAXSPEED = 100;
+	private const int MAXSPEED = 80;
 	private const int ACCELERATION = 400;
-	private const int FRICTION = 400; 
+	private const int FRICTION = 500; 
 	Vector2 velocity = new Vector2(0,0);
+	private AnimationPlayer animationPlayer;
 
+
+    public override void _Ready()
+    {
+        base._Ready();
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		GD.Print("Player listo");
+    }
     public override void _PhysicsProcess(double delta)
     {
 
@@ -20,12 +28,21 @@ public partial class Player : CharacterBody2D
 		inputVector = inputVector.Normalized();
 
 		if (inputVector != Vector2.Zero){
-			
+
+			if (inputVector.X > 0){
+
+				animationPlayer.Play("RunRight");
+
+			} else{
+				animationPlayer.Play("RunLeft");
+
+			}
+
 			velocity = velocity.MoveToward(inputVector * MAXSPEED, ACCELERATION * (float)delta);
 			Velocity = velocity;
 
 		}else{
-			//velocity = Vector2.Zero;
+			animationPlayer.Play("IdleRight");
 			velocity = velocity.MoveToward(Vector2.Zero, FRICTION * (float)delta);
 			Velocity = velocity;
 
