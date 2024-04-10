@@ -9,12 +9,17 @@ public partial class Player : CharacterBody2D
 	private const int FRICTION = 500; 
 	Vector2 velocity = new Vector2(0,0);
 	private AnimationPlayer animationPlayer;
+	private AnimationTree animationTree;
+	private AnimationNodeStateMachinePlayback animationNodeStateMachinePlayback;
 
 
     public override void _Ready()
     {
         base._Ready();
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		animationTree = GetNode<AnimationTree>("AnimationTree");
+		animationNodeStateMachinePlayback = (AnimationNodeStateMachinePlayback) animationTree.Get("parameters/playback");
+
 		GD.Print("Player listo");
     }
     public override void _PhysicsProcess(double delta)
@@ -29,20 +34,15 @@ public partial class Player : CharacterBody2D
 
 		if (inputVector != Vector2.Zero){
 
-			if (inputVector.X > 0){
+			animationTree.Set("parameters/Idle/blend_position", inputVector);
+			animationTree.Set("parameters/Run/blend_position", inputVector);
 
-				animationPlayer.Play("RunRight");
-
-			} else{
-				animationPlayer.Play("RunLeft");
-
-			}
-
+			animationNodeStateMachinePlayback.Travel("Run");
 			velocity = velocity.MoveToward(inputVector * MAXSPEED, ACCELERATION * (float)delta);
 			Velocity = velocity;
 
 		}else{
-			animationPlayer.Play("IdleRight");
+			animationNodeStateMachinePlayback.Travel("Idle");
 			velocity = velocity.MoveToward(Vector2.Zero, FRICTION * (float)delta);
 			Velocity = velocity;
 
