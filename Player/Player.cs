@@ -4,10 +4,10 @@ using Godot;
 public partial class Player : CharacterBody2D
 {
 	//private int speed = 3;
-	private const int MAXSPEED = 80;
+	private const int MAXSPEED = 70;
 	private const int ACCELERATION = 400;
 	private const int FRICTION = 500; 
-	Vector2 velocity = new Vector2(0,0);
+	private Vector2 velocity = new Vector2(0,0);
 	private AnimationPlayer animationPlayer;
 	private AnimationTree animationTree;
 	private AnimationNodeStateMachinePlayback animationNodeStateMachinePlayback;
@@ -42,6 +42,7 @@ public partial class Player : CharacterBody2D
 			Velocity = velocity;
 
 		}else{
+
 			animationNodeStateMachinePlayback.Travel("Idle");
 			velocity = velocity.MoveToward(Vector2.Zero, FRICTION * (float)delta);
 			Velocity = velocity;
