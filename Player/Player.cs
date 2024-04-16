@@ -10,8 +10,6 @@ public partial class Player : CharacterBody2D
 		ROLL,
 		ATTACk
 	} 
-
-	//private int speed = 3;
 	private const int MAXSPEED = 70;
 	private const int ACCELERATION = 400;
 	private const int FRICTION = 500; 
@@ -27,8 +25,6 @@ public partial class Player : CharacterBody2D
     public override void _Ready()
     {
         base._Ready();
-
-		//animationTree.Active = true;
 
 		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
 		animationTree = GetNode<AnimationTree>("AnimationTree");
